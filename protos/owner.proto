@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+message Owner {
+    int32 id = 1 ;
+    string cin = 2 ;
+    string fullname = 3 ;
+    string qrhash = 4 ;
+    string vaccine_name = 5 ;
+    int32 nb_shots = 6 ;
+    
+}
+
+service OwnerService {
+    rpc CreatOwner ( Owner) returns (Empty);
+    rpc GetOwner (Owner) returns (Owner);
+    rpc GetOwners (OwnerReq) returns (Owners);
+    rpc DeletOwner (Owner) returns (Empty);
+    rpc findOwnerByqrHash (OwnerReq) returns (Owner);
+   
+}
+
+message Empty{}
+
+message Owners {
+
+    repeated Owner owners = 1 ;
+    
+}
+
+message OwnerReq{
+
+    int32 id = 1 ;
+
+}
